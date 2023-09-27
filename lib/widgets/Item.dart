@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:to_do_app/views/Item_Content_View.dart';
+
+import 'package:provider/provider.dart';
+
+import '../models/tasks_data.dart';
 
 class Item extends StatefulWidget {
   const Item({super.key});
@@ -22,7 +27,7 @@ class _ItemState extends State<Item> {
         height: 180,
         decoration: BoxDecoration(
             color: Colors.amber, borderRadius: BorderRadius.circular(16)),
-        child: const Padding(
+        child:  Padding(
           padding: EdgeInsets.all(20.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -33,7 +38,22 @@ class _ItemState extends State<Item> {
                   "Title",
                   style: TextStyle(fontSize: 30),
                 ),
-                subtitle: Text("18/9/2023 3:55 AM"),
+                subtitle: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "18/9/2023 3:55 AM",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      '${Provider.of<TaskData>(context).tasks.length} Tasks ',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    )
+                  ],
+                ),
                 trailing: Icon(
                   Icons.push_pin,
                   color: Colors.black,

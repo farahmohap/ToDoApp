@@ -12,7 +12,7 @@ class HomeView extends StatelessWidget {
       appBar: AppBar(
         clipBehavior: Clip.values[3],
         elevation: 25,
-        shadowColor: Colors.purple,
+       // shadowColor: Colors.purple,
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 10.0),
