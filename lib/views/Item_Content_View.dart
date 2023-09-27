@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:to_do_app/widgets/Add_Item_Button.dart';
 import 'package:to_do_app/widgets/ContentTitle.dart';
 import 'package:to_do_app/widgets/TaskBottomSheet.dart';
@@ -46,30 +47,43 @@ class ItemContentView extends StatelessWidget {
         toolbarHeight: 50,
         forceMaterialTransparency: true,
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ContentTitle(),
-          Divider(
-            thickness: 3,
-            color: Colors.purple,
-            indent: 20,
-            endIndent: 285,
-          ),
-          Expanded(
-            child: Container(
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.all(
-                  Radius.circular(40),
+      // bottomNavigationBar:  Lottie.asset('assetss/animations/aa.json'),
+      body: Stack(fit: StackFit.expand, children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            ContentTitle(),
+            // Divider(
+            //   thickness: 3,
+            //   color: Colors.purple,
+            //   indent: 20,
+            //   endIndent: 285,
+            // ),
+            Expanded(
+              child: Container(
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(40),
+                  ),
                 ),
+                margin: const EdgeInsets.all(15),
+                child: TasksList(),
               ),
-              margin: const EdgeInsets.all(15),
-              child: TasksList(),
             ),
-          ),
-        ],
-      ),
+          ],
+        ),
+        // Lottie.asset('assetss/animations/aa.json')
+        //   }
+        // RunAnimation() {
+
+        //   if (Task() == true) {
+        //     return Lottie.asset('assetss/animations/aa.json');
+        //   }
+        //   return null;
+        // }
+      ]),
     );
   }
 }

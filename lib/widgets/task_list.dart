@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import '../models/tasks_data.dart';
 import 'TaskTile.dart';
 
 class TasksList extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return Consumer<TaskData>(
@@ -14,11 +16,8 @@ class TasksList extends StatelessWidget {
             return TaskTile(
               isChecked: taskData.tasks[index].isDone,
               tasktitle: taskData.tasks[index].name,
-             
               checkboxChange: (newValue) {
-                taskData.updateTask(taskData.tasks[index]);
-                
-
+                taskData.updateTask(taskData.tasks[index]);              
               },
               listTileDelete: () {
                 taskData.deleteTask(taskData.tasks[index]);
@@ -30,3 +29,11 @@ class TasksList extends StatelessWidget {
     );
   }
 }
+
+// RunAnimation() {
+
+  //   if (Task() == true) {
+  //     return Lottie.asset('assetss/animations/aa.json');
+  //   }
+  //   return null;
+  // }

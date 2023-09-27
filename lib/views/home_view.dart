@@ -12,10 +12,10 @@ class HomeView extends StatelessWidget {
       appBar: AppBar(
         clipBehavior: Clip.values[3],
         elevation: 25,
-       // shadowColor: Colors.purple,
-        actions: [
+        // shadowColor: Colors.purple,
+        actions: const [
           Padding(
-            padding: const EdgeInsets.only(right: 10.0),
+            padding: EdgeInsets.only(right: 10.0),
             child: Icon(
               Icons.menu,
               size: 30,
@@ -28,7 +28,11 @@ class HomeView extends StatelessWidget {
         leading: Image.asset("assetss/images/to-doo.png"),
         backgroundColor: Colors.white,
       ),
-      floatingActionButton: AddItemButton(),
+      floatingActionButton: GestureDetector(
+          onTap: () {
+            ItemList(itemscount: 2);
+          },
+          child: AddItemButton()),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: Padding(
         padding: EdgeInsets.only(left: 10, right: 10),

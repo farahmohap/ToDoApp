@@ -1,9 +1,19 @@
 import 'package:flutter/material.dart';
 
-class ContentTitle extends StatelessWidget {
-  ContentTitle({super.key, this.title = "Title"});
+class ContentTitle extends StatefulWidget {
+  ContentTitle({
+    super.key,
+  });
 
-  final String title;
+  @override
+  State<ContentTitle> createState() => _ContentTitleState();
+}
+
+class _ContentTitleState extends State<ContentTitle> {
+  String title = "Title";
+
+  TextEditingController controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -12,18 +22,67 @@ class ContentTitle extends StatelessWidget {
         children: [
           Text(
             title,
-            style: TextStyle(
-                fontSize: 40,
+            style: const TextStyle(
+                fontSize: 30,
                 color: Colors.purple,
                 fontWeight: FontWeight.bold),
           ),
-          SizedBox(
+          const SizedBox(
             width: 10,
           ),
-          Icon(
-            Icons.edit,
-            size: 30,
-            color: Colors.grey,
+          GestureDetector(
+            onTap: () {
+              showDialog(
+                  context: context,
+                  builder: (context) {
+                    return ClipRRect(
+                      borderRadius: BorderRadius.circular(50),
+                      child: Dialog(
+                        insetAnimationCurve: Curves.easeInOutBack,
+                        insetAnimationDuration: Duration(seconds: 2),
+                        //clipBehavior: Clip.antiAlias,
+                        child: Container(
+                          height: 150,
+                          width: 150,
+                          child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Text(
+                                  ("New Title"),
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      color: Colors.amber,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(
+                                  width: 150,
+                                  child: TextField(controller: controller),
+                                ),
+                                TextButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      title = controller.text;
+                                      controller.text = "";
+                                    });
+
+                                    Navigator.pop(context);
+                                  },
+                                  child: Text("Apply"),
+                                  style: TextButton.styleFrom(
+                                      foregroundColor: Colors.white,
+                                      backgroundColor: Colors.purple),
+                                )
+                              ]),
+                        ),
+                      ),
+                    );
+                  });
+            },
+            child: const Icon(
+              Icons.edit,
+              size: 30,
+              color: Colors.grey,
+            ),
           ),
         ],
       ),

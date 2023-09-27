@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:to_do_app/views/Item_Content_View.dart';
-
-import 'package:provider/provider.dart';
-
 import '../models/tasks_data.dart';
 
 class Item extends StatefulWidget {

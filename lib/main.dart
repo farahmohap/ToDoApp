@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_app/models/tasks_data.dart';
+import 'package:to_do_app/views/Item_Content_View.dart';
 import 'package:to_do_app/views/home_view.dart';
 import 'package:provider/provider.dart';
 
@@ -14,6 +15,6 @@ class ToDoApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (context)=>TaskData(),
-      child: MaterialApp(debugShowCheckedModeBanner: false, home: HomeView()));
+      child: MaterialApp(debugShowCheckedModeBanner: false, home: ItemContentView()));
   }
 }
